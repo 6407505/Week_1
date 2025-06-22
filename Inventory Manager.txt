@@ -123,3 +123,18 @@ public class InventoryManager {
         scanner.close();
     }
 }
+
+OUTPUT :
+
+Inventory Menu
+1. Add Product
+2. Update Product
+3. Delete Product
+4. View All Products
+5. Exit
+Choose an option: 1
+Enter Product ID: 123
+Enter Product Name: Soap
+Enter Quantity: 3
+Enter Price: 20
+Product added successfully.
