@@ -1,0 +1,78 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SearchEngine {
+
+    static class Product implements Comparable<Product> {
+        int productId;
+        String productName;
+        String category;
+
+        Product(int productId, String productName, String category) {
+            this.productId = productId;
+            this.productName = productName;
+            this.category = category;
+        }
+
+        public int compareTo(Product other) {
+            return this.productName.compareToIgnoreCase(other.productName);
+        }
+
+        public void show() {
+            System.out.println("ID: " + productId + ", Name: " + productName + ", Category: " + category);
+        }
+    }
+
+    public static Product linearSearch(Product[] products, String name) {
+        for (Product p : products) {
+            if (p.productName.equalsIgnoreCase(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public static Product binarySearch(Product[] sortedProducts, String name) {
+        int start = 0;
+        int end = sortedProducts.length - 1;
+
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            int check = sortedProducts[mid].productName.compareToIgnoreCase(name);
+
+            if (check == 0) return sortedProducts[mid];
+            else if (check < 0) start = mid + 1;
+            else end = mid - 1;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        Product[] productList = {
+            new Product(201, "Laptop", "Electronics"),
+            new Product(202, "Shoes", "Fashion"),
+            new Product(203, "Book", "Education"),
+            new Product(204, "Phone", "Electronics"),
+            new Product(205, "Watch", "Accessories")
+        };
+
+        Product[] sortedList = Arrays.copyOf(productList, productList.length);
+        Arrays.sort(sortedList);
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the product name to search: ");
+        String targetName = input.nextLine();
+
+        System.out.println("\nResult from Linear Search:");
+        Product result1 = linearSearch(productList, targetName);
+        if (result1 != null) result1.show();
+        else System.out.println("Product not found.");
+
+        System.out.println("\nResult from Binary Search:");
+        Product result2 = binarySearch(sortedList, targetName);
+        if (result2 != null) result2.show();
+        else System.out.println("Product not found.");
+
+        input.close();
+    }
+}
