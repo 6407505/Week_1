@@ -1,4 +1,4 @@
-public class DocumentCreato {
+public class DocumentCreator {
 
     interface Document {
         void open();
