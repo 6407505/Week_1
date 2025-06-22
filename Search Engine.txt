@@ -76,3 +76,14 @@ public class SearchEngine {
         input.close();
     }
 }
+
+
+OUTPUT :
+
+Enter the product name to search: Laptop
+
+Result from Linear Search:
+ID: 201, Name: Laptop, Category: Electronics
+
+Result from Binary Search:
+ID: 201, Name: Laptop, Category: Electronics
