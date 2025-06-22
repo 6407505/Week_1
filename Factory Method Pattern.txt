@@ -1,4 +1,4 @@
-public class DocumentCreatorDemo {
+public class DocumentCreato {
 
     interface Document {
         void open();
@@ -55,8 +55,15 @@ public class DocumentCreatorDemo {
         Document pdf = maker.create();
         pdf.open();
 
+
         maker = new ExcelMaker();
         Document excel = maker.create();
         excel.open();
     }
 }
+
+OUTPUT:
+
+Word Document is now open and ready to type!
+PDF Document is now open for viewing.
+Excel Spreadsheet is now open for editing numbers.
